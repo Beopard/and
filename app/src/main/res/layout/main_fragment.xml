@@ -34,6 +34,7 @@
         app:layout_constraintTop_toTopOf="@+id/button" />
 
     <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerView"
         android:layout_width="409dp"
         android:layout_height="681dp"
         app:layout_constraintStart_toStartOf="parent"
