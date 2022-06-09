@@ -4,10 +4,11 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="..\:/Users/bon300-04/AndroidStudioProjects/AnonymousBoard/app/src/main/res/layout/activity_main.xml" value="0.2611464968152866" />
-        <entry key="..\:/Users/bon300-04/AndroidStudioProjects/AnonymousBoard/app/src/main/res/layout/detail_fragment.xml" value="0.5" />
+        <entry key="..\:/Users/bon300-04/AndroidStudioProjects/AnonymousBoard/app/src/main/res/layout/detail_fragment.xml" value="0.25" />
         <entry key="..\:/Users/bon300-04/AndroidStudioProjects/AnonymousBoard/app/src/main/res/layout/edit_fragment.xml" value="0.33" />
         <entry key="..\:/Users/bon300-04/AndroidStudioProjects/AnonymousBoard/app/src/main/res/layout/main_fragment.xml" value="0.33" />
         <entry key="..\:/Users/bon300-04/AndroidStudioProjects/AnonymousBoard/app/src/main/res/layout/post_list.xml" value="0.9" />
+        <entry key="..\:/Users/bon300-04/AndroidStudioProjects/AnonymousBoard/app/src/main/res/layout/write_fragment.xml" value="0.33" />
       </map>
     </option>
   </component>

@@ -8,14 +8,16 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.activityViewModels
-import androidx.fragment.app.viewModels
+import androidx.navigation.fragment.findNavController
 import com.example.anonymousboard.MainViewModel
 import com.example.anonymousboard.R
-import com.example.anonymousboard.databinding.DetailFragmentBinding
+import com.example.anonymousboard.databinding.EditFragmentBinding
 import com.example.anonymousboard.databinding.MainFragmentBinding
+import com.example.anonymousboard.databinding.WriteFragmentBinding
 
-class DetailFragment : Fragment() {
-    private var _binding: DetailFragmentBinding?=null
+class WriteFragment : Fragment() {
+
+    private var _binding: WriteFragmentBinding?=null
     private val binding get()= _binding!!
     private val viewModel by activityViewModels<MainViewModel>()
 
@@ -23,16 +25,21 @@ class DetailFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        _binding= DetailFragmentBinding.inflate(inflater,container,false)
+        _binding= WriteFragmentBinding.inflate(inflater,container,false)
         return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        binding.textViewDetailTitle.text= this.viewModel.post.value?.title.toString()
-        binding.textViewDetailContents.text= this.viewModel.post.value?.contents.toString()
+        binding.buttonWriteCancel.setOnClickListener {
+            findNavController().navigate(R.id.action_writeFragment_to_mainFragment)
+        }
+        binding.buttonWrite.setOnClickListener {
+            Log.d("RESPONSE","${binding.editTextWriteTitle.text.toString()}")
+            viewModel.insertPost(binding.editTextWriteTitle.text.toString(),binding.editTextWriteContents.text.toString(),binding.editTextWritePassword.text.toString())
 
+        }
     }
 
     override fun onDestroyView() {

@@ -8,17 +8,7 @@
     tools:context=".ui.DetailFragment">
 
     <TextView
-        android:id="@+id/textView2"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:text="DetailFragment"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <TextView
-        android:id="@+id/textView"
+        android:id="@+id/textViewDetailTitle"
         android:layout_width="116dp"
         android:layout_height="29dp"
         android:text="Title"
@@ -30,16 +20,16 @@
         app:layout_constraintVertical_bias="0.13999999" />
 
     <TextView
-        android:id="@+id/textView4"
+        android:id="@+id/textViewDetailContents"
         android:layout_width="244dp"
         android:layout_height="268dp"
         android:layout_marginTop="8dp"
         android:text="Contents"
-        app:layout_constraintStart_toStartOf="@+id/textView"
-        app:layout_constraintTop_toBottomOf="@+id/textView" />
+        app:layout_constraintStart_toStartOf="@+id/textViewDetailTitle"
+        app:layout_constraintTop_toBottomOf="@+id/textViewDetailTitle" />
 
     <Button
-        android:id="@+id/button3"
+        android:id="@+id/buttonGoEdit"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
@@ -57,17 +47,15 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.097"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/textView2"
-        app:layout_constraintVertical_bias="0.65999997" />
+        app:layout_constraintStart_toStartOf="parent" />
 
     <Button
-        android:id="@+id/button4"
+        android:id="@+id/buttonDelete"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
         android:text="삭제"
-        app:layout_constraintStart_toEndOf="@+id/button3"
-        app:layout_constraintTop_toTopOf="@+id/button3" />
+        app:layout_constraintStart_toEndOf="@+id/buttonGoEdit"
+        app:layout_constraintTop_toTopOf="@+id/buttonGoEdit" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

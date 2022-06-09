@@ -13,4 +13,7 @@
         <item name="android:statusBarColor" tools:targetApi="l">?attr/colorPrimaryVariant</item>
         <!-- Customize your theme here. -->
     </style>
+    <style name="BigButton" parent="Widget.Material3.Button">
+        <item name="android:textSize">40sp</item>
+    </style>
 </resources>
