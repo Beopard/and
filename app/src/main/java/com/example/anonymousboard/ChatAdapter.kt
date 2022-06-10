@@ -1,11 +1,9 @@
 package com.example.anonymousboard
 
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
-import androidx.lifecycle.MutableLiveData
 import androidx.recyclerview.widget.RecyclerView
 import com.example.anonymousboard.model.Post
 
@@ -32,7 +30,6 @@ class ChatAdapter:RecyclerView.Adapter<ChatAdapter.ChatViewHolder>() {
         val textViewViews: TextView = view.findViewById(R.id.textViewViews)
         init {
             view.setOnClickListener {
-                Log.d("click", "${this.layoutPosition}th item clicked ${this.textViewPostId.text}")
                 listener?.onItemClick(view,textViewPostId.text.toString())
             }
         }
@@ -47,7 +44,7 @@ class ChatAdapter:RecyclerView.Adapter<ChatAdapter.ChatViewHolder>() {
 
     override fun onBindViewHolder(holder: ChatViewHolder, position: Int) {
         val item = data[position]
-        holder.textViewPostId.text = item.post_id.toString()
+        holder.textViewPostId.text = item.post_id
         holder.textViewTitle.text = item.title
         holder.textViewTime.text = item.created_time
         holder.textViewViews.text = item.views

@@ -1,11 +1,12 @@
 package com.example.anonymousboard.model
 
 data class Post(
-    val post_id: Int,
-    val title: String,
-    val contents: String,
-    val created_time: String,
-    val views: String
+    var post_id: String,
+    var title: String,
+    var contents: String,
+    var created_time: String,
+    var views: String,
+    var password: String
 
 
     )

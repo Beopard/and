@@ -17,17 +17,17 @@ class MainViewModel : ViewModel() {
     val post = MutableLiveData<Post>()
     lateinit var request: Call<Post>
 
-    fun getPost(id: Int) = viewModelScope.launch {
+    fun getPost(id: String) = viewModelScope.launch {
         val request = JsServer.postApi.getPost(id)
         request.enqueue(object : Callback<Post> {
             override fun onResponse(call: Call<Post>, response: Response<Post>) {
                 post.value = response.body()
-                Log.d("RESPONSE", "Response: ${response.code()} ${post.value}")
+                Log.d("RESPONSE", "getPost요: ${response.code()} ${post.value}")
             }
 
             override fun onFailure(call: Call<Post>, t: Throwable) {
                 error.value = t.localizedMessage
-                Log.d("RESPONSE", "Response: ${t.localizedMessage}")
+                Log.d("RESPONSE", "getPost에러요: ${t.localizedMessage}")
             }
         })
     }
@@ -37,15 +37,31 @@ class MainViewModel : ViewModel() {
         request.enqueue(object : Callback<List<Post>> {
             override fun onResponse(call: Call<List<Post>>, response: Response<List<Post>>) {
                 posts.value = response.body()
-                Log.d("RESPONSE", "Response: ${response.code()}? ${posts.value}")
+                Log.d("RESPONSE", "getPosts요: ${response.code()}? ${posts.value}")
             }
 
             override fun onFailure(call: Call<List<Post>>, t: Throwable) {
                 error.value = t.localizedMessage
-                Log.d("RESPONSE", "Response: ${t.localizedMessage}")
+                Log.d("RESPONSE", "getPosts에러요: ${t.localizedMessage}")
             }
         })
     }
+
+    fun getPostsViews() = viewModelScope.launch {
+        val request = JsServer.postApi.getPostsViews()
+        request.enqueue(object : Callback<List<Post>> {
+            override fun onResponse(call: Call<List<Post>>, response: Response<List<Post>>) {
+                posts.value = response.body()
+                Log.d("RESPONSE", "getPostsViews요: ${response.code()}? ${posts.value}")
+            }
+
+            override fun onFailure(call: Call<List<Post>>, t: Throwable) {
+                error.value = t.localizedMessage
+                Log.d("RESPONSE", "getPostsViews에러요: ${t.localizedMessage}")
+            }
+        })
+    }
+
 
     fun getPostsBySearch(title:String) = viewModelScope.launch {
         val request = JsServer.postApi.getPostsBySearch(title)
@@ -64,7 +80,7 @@ class MainViewModel : ViewModel() {
 
     fun insertPost(title: String,contents:String,password:String) = viewModelScope.launch {
         val request = JsServer.postApi.insertPost(title,contents,password)
-        request?.run{enqueue(object : Callback<String> {
+        request.enqueue(object : Callback<String> {
 
             override fun onResponse(call: Call<String>, response: Response<String>) {
                 Log.d("RESPONSE", "insertPost요: ${response}")
@@ -73,7 +89,35 @@ class MainViewModel : ViewModel() {
             override fun onFailure(call: Call<String>, t: Throwable) {
                 Log.d("RESPONSE", "insertPost에러요: ${t.localizedMessage}")
             }
-        })}
+        })
+    }
+
+    fun updatePost(post_id:String,title: String,contents:String) = viewModelScope.launch {
+        val request = JsServer.postApi.updatePost(post_id,title,contents)
+        request.enqueue(object : Callback<String> {
+
+            override fun onResponse(call: Call<String>, response: Response<String>) {
+                Log.d("RESPONSE", "updatePost요: ${response}")
+            }
+
+            override fun onFailure(call: Call<String>, t: Throwable) {
+                Log.d("RESPONSE", "updatePost에러요: ${t.localizedMessage}")
+            }
+        })
+    }
+
+    fun deletePost(id:String,password: String) = viewModelScope.launch {
+        val request = JsServer.postApi.deletePost(id,password)
+        request.enqueue(object : Callback<String> {
+
+            override fun onResponse(call: Call<String>, response: Response<String>) {
+                Log.d("RESPONSE", "deletePost요: ${response}")
+            }
+
+            override fun onFailure(call: Call<String>, t: Throwable) {
+                Log.d("RESPONSE", "deletePost에러요: ${t.localizedMessage}")
+            }
+        })
     }
 
 

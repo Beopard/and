@@ -1,16 +1,14 @@
 package com.example.anonymousboard.ui
 
-import androidx.lifecycle.ViewModelProvider
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.activityViewModels
+import androidx.navigation.fragment.findNavController
 import com.example.anonymousboard.MainViewModel
-import com.example.anonymousboard.R
 import com.example.anonymousboard.databinding.EditFragmentBinding
-import com.example.anonymousboard.databinding.MainFragmentBinding
 
 class EditFragment : Fragment() {
 
@@ -28,6 +26,18 @@ class EditFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        binding.editTextEditTitle.setText(this.viewModel.post.value?.title.toString())
+        binding.editTextEditContents.setText(this.viewModel.post.value?.contents.toString())
+
+        binding.buttonEdit.setOnClickListener {
+            viewModel.post.value?.let { it1 -> viewModel.updatePost(it1.post_id,binding.editTextEditTitle.text.toString(),binding.editTextEditContents.text.toString()) }
+            findNavController().popBackStack()
+            findNavController().popBackStack()
+        }
+        binding.buttonCancel.setOnClickListener {
+            findNavController().popBackStack()
+        }
 
     }
 
