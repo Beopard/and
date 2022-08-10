@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph"
-    app:startDestination="@id/mainFragment">
+    app:startDestination="@id/loginFragment">
 
     <fragment
         android:id="@+id/detailFragment"
@@ -36,4 +36,21 @@
         android:name="com.example.anonymousboard.ui.WriteFragment"
         android:label="write_fragment"
         tools:layout="@layout/write_fragment" />
+    <fragment
+        android:id="@+id/joinFragment"
+        android:name="com.example.anonymousboard.ui.JoinFragment"
+        android:label="fragment_join"
+        tools:layout="@layout/fragment_join" />
+    <fragment
+        android:id="@+id/loginFragment"
+        android:name="com.example.anonymousboard.ui.LoginFragment"
+        android:label="fragment_login"
+        tools:layout="@layout/fragment_login" >
+        <action
+            android:id="@+id/action_loginFragment_to_mainFragment"
+            app:destination="@id/mainFragment" />
+        <action
+            android:id="@+id/action_loginFragment_to_joinFragment"
+            app:destination="@id/joinFragment" />
+    </fragment>
 </navigation>

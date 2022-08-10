@@ -17,6 +17,21 @@ class MainViewModel : ViewModel() {
     val post = MutableLiveData<Post>()
     lateinit var request: Call<Post>
 
+    fun attemptLogin(id: String,password:String) = viewModelScope.launch {
+        val request = JsServer.userApi.login(id,password)
+        request.enqueue(object : Callback<String> {
+
+            override fun onResponse(call: Call<String>, response: Response<String>) {
+                Log.d("RESPONSE", "login요: ${response}")
+            }
+
+            override fun onFailure(call: Call<String>, t: Throwable) {
+                Log.d("RESPONSE", "login에러요: ${t.localizedMessage}")
+            }
+        })
+    }
+
+
     fun getPost(id: String) = viewModelScope.launch {
         val request = JsServer.postApi.getPost(id)
         request.enqueue(object : Callback<Post> {

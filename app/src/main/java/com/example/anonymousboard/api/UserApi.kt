@@ -1,0 +1,14 @@
+package com.example.anonymousboard.api
+
+import com.example.anonymousboard.model.Post
+import retrofit2.Call
+import retrofit2.http.*
+
+interface UserApi {
+
+
+    @POST("login")
+    fun login(@Query("username")username:String,@Query("password")password:String):Call<>
+
+
+}
