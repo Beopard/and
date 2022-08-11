@@ -24,10 +24,10 @@ class ChatAdapter:RecyclerView.Adapter<ChatAdapter.ChatViewHolder>() {
     }
 
     class ChatViewHolder(view: View, listener: OnItemClickListener?): RecyclerView.ViewHolder(view){
-        val textViewPostId: TextView = view.findViewById(R.id.textViewPostId)
-        val textViewTitle: TextView = view.findViewById(R.id.textViewTitle)
+        val textViewPostId: TextView = view.findViewById(R.id.textViewStartPlace)
+        val textViewTitle: TextView = view.findViewById(R.id.textViewStartTime)
         val textViewTime:TextView = view.findViewById(R.id.textViewTime)
-        val textViewViews: TextView = view.findViewById(R.id.textViewViews)
+        val textViewViews: TextView = view.findViewById(R.id.textViewDistanceFromMe)
         init {
             view.setOnClickListener {
                 listener?.onItemClick(view,textViewPostId.text.toString())

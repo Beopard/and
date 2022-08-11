@@ -3,44 +3,123 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:padding="8dp"
-    android:layout_margin="4dp">
+    android:layout_height="100dp"
+    android:layout_margin="4dp"
+    android:padding="8dp">
 
     <TextView
-        android:id="@+id/textViewTime"
-        android:layout_width="0dp"
+        android:id="@+id/textView12"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="32dp"
-        android:text="작성시간"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/textViewViews" />
+        android:text="<->"
+        app:layout_constraintEnd_toStartOf="@+id/textViewEndPlace"
+        app:layout_constraintStart_toEndOf="@+id/textViewStartPlace"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/textViewTitle"
+        android:id="@+id/textViewDistance"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="배달거리"
+        app:layout_constraintEnd_toEndOf="@+id/textView12"
+        app:layout_constraintStart_toStartOf="@+id/textView12"
+        app:layout_constraintTop_toBottomOf="@+id/textView12" />
+
+    <TextView
+        android:id="@+id/textViewStartTime"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="출발시각"
+        app:layout_constraintEnd_toEndOf="@+id/textViewStartPlace"
+        app:layout_constraintStart_toStartOf="@+id/textViewStartPlace"
+        app:layout_constraintTop_toBottomOf="@+id/textViewStartPlace" />
+
+    <TextView
+        android:id="@+id/textViewDistanceFromMe"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="나로부터떨어진거리"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/guideline2"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/textViewStartPlace"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
-        android:text="제목"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/textViewPostId" />
+        android:text="출발지"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/textViewViews"
+        android:id="@+id/textViewEndPlace"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="8dp"
-        android:text="조회수"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
+        android:text="도착지"
+        app:layout_constraintEnd_toStartOf="@+id/guideline2"
+        app:layout_constraintHorizontal_bias="0.73"
+        app:layout_constraintStart_toEndOf="@+id/textViewStartPlace"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/textViewPostId"
+        android:id="@+id/textViewEndTime"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="글번호"
+        android:text="도착시각"
+        app:layout_constraintEnd_toEndOf="@+id/textViewEndPlace"
+        app:layout_constraintStart_toStartOf="@+id/textViewEndPlace"
+        app:layout_constraintTop_toBottomOf="@+id/textViewEndPlace" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_begin="249dp" />
+
+    <TextView
+        android:id="@+id/textViewSize"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:text="사이즈"
+        app:layout_constraintStart_toStartOf="@+id/guideline2"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/textViewNum"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="16dp"
+        android:text="갯수"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/textView8"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="총 무게"
+        app:layout_constraintStart_toStartOf="@+id/textViewSize"
+        app:layout_constraintTop_toBottomOf="@+id/textViewSize" />
+
+    <TextView
+        android:id="@+id/textViewWeight"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="~몇kg"
+        app:layout_constraintEnd_toEndOf="@+id/textViewNum"
+        app:layout_constraintTop_toBottomOf="@+id/textViewNum" />
+
+    <TextView
+        android:id="@+id/textViewPrice"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="총 가격"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/guideline2" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
