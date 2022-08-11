@@ -6,6 +6,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.anonymousboard.api.JsServer
 import com.example.anonymousboard.model.Post
+import com.example.anonymousboard.model.Response2
 import kotlinx.coroutines.launch
 import retrofit2.Call
 import retrofit2.Callback
@@ -19,13 +20,13 @@ class MainViewModel : ViewModel() {
 
     fun attemptLogin(id: String,password:String) = viewModelScope.launch {
         val request = JsServer.userApi.login(id,password)
-        request.enqueue(object : Callback<String> {
+        request.enqueue(object : Callback<Response2> {
 
-            override fun onResponse(call: Call<String>, response: Response<String>) {
+            override fun onResponse(call: Call<Response2>, response: Response<Response2>) {
                 Log.d("RESPONSE", "login요: ${response}")
             }
 
-            override fun onFailure(call: Call<String>, t: Throwable) {
+            override fun onFailure(call: Call<Response2>, t: Throwable) {
                 Log.d("RESPONSE", "login에러요: ${t.localizedMessage}")
             }
         })
