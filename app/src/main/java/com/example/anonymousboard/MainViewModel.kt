@@ -5,6 +5,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.anonymousboard.api.JsServer
+import com.example.anonymousboard.model.Order
 import com.example.anonymousboard.model.Post
 import com.example.anonymousboard.model.Response2
 import kotlinx.coroutines.launch
@@ -16,7 +17,27 @@ class MainViewModel : ViewModel() {
     val error = MutableLiveData<String>()
     val posts = MutableLiveData<List<Post>>()
     val post = MutableLiveData<Post>()
+    val orders = MutableLiveData<List<Order>>()
     lateinit var request: Call<Post>
+
+    fun getOrders(user_id: String) = viewModelScope.launch {
+        val request = JsServer.orderApi.getOrders(user_id)
+        request.enqueue(object : Callback<List<Order>> {
+            override fun onResponse(call: Call<List<Order>>, response: Response<List<Order>>) {
+                orders.value = response.body()
+                for(item in orders.value!!) {
+                    Log.d("RESPONSE", "getOrders요: ${item}")
+                }
+                Log.d("RESPONSE", "getOrders요: ${response.code()} ${orders.value}")
+            }
+
+            override fun onFailure(call: Call<List<Order>>, t: Throwable) {
+                error.value = t.localizedMessage
+                Log.d("RESPONSE", "getOrders요에러요: ${t.localizedMessage}")
+            }
+        })
+    }
+
 
     fun attemptLogin(id: String,password:String) = viewModelScope.launch {
         val request = JsServer.userApi.login(id,password)

@@ -2,6 +2,7 @@ package com.example.anonymousboard.ui
 
 import androidx.lifecycle.ViewModelProvider
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -9,6 +10,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
+import com.example.anonymousboard.ChatAdapter
 import com.example.anonymousboard.MainViewModel
 import com.example.anonymousboard.R
 import com.example.anonymousboard.ViewPagerAdapter
@@ -21,6 +23,7 @@ class DeliveryListFragment : Fragment() {
 
     private var _binding: FragmentDeliveryListBinding?=null
     private val binding get()= _binding!!
+    private val adapter = ChatAdapter()
     private val viewModel by activityViewModels<MainViewModel>()
 
     private val tabTitleArray = arrayOf(
@@ -28,6 +31,13 @@ class DeliveryListFragment : Fragment() {
         "Tab2",
         "Tab3"
     )
+
+//    adapter.setListener{v,postId->
+//        Log.d("RESPONSE", "???${postId}")
+//        viewModel.getPost(postId)
+//
+//        findNavController().navigate(R.id.action_mainFragment_to_detailFragment)
+//    }
 
 
     override fun onCreateView(
@@ -46,6 +56,12 @@ class DeliveryListFragment : Fragment() {
         TabLayoutMediator(binding.tabLayout, binding.viewPager) { tab, position ->
             tab.text = tabTitleArray[position]
         }.attach()
+
+        viewModel.getOrders("sw")
+        viewModel.orders.observe(viewLifecycleOwner) {
+            Log.d("RESPONSE", "orders.observe요${it.toString()}")
+            adapter.setData(it.toMutableList())
+        }
 
     }
 

@@ -56,7 +56,7 @@ class MainFragment : Fragment() {
         viewModel.getPosts()
         viewModel.posts.observe(viewLifecycleOwner) {
             Log.d("RESPONSE", "posts.observe요${it.toString()}")
-            adapter.setData(it.toMutableList())
+//            adapter.setData(it.toMutableList())
         }
 
 

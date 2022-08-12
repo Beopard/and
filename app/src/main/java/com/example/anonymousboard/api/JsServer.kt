@@ -15,5 +15,6 @@ class JsServer {
             .build()
         var postApi:PostApi = server.create(PostApi::class.java)
         var userApi:UserApi = server.create(UserApi::class.java)
+        var orderApi:OrderApi = server.create(OrderApi::class.java)
     }
 }
