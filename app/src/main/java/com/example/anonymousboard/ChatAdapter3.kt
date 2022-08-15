@@ -14,7 +14,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.anonymousboard.model.Order
 import com.example.anonymousboard.model.Post
 
-class ChatAdapter:RecyclerView.Adapter<ChatAdapter.ChatViewHolder>() {
+class ChatAdapter3:RecyclerView.Adapter<ChatAdapter3.ChatViewHolder>() {
     fun interface OnItemClickListener{
         fun onItemClick(v:View,textViewPostId:String)
     }

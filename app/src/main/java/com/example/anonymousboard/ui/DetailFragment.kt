@@ -1,13 +1,16 @@
 package com.example.anonymousboard.ui
 
+import android.content.Context
 import android.os.Bundle
 import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.content.ContextCompat
 import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
+import com.example.anonymousboard.MainActivity
 import com.example.anonymousboard.MainViewModel
 import com.example.anonymousboard.R
 import com.example.anonymousboard.databinding.DetailFragmentBinding
@@ -27,6 +30,7 @@ class DetailFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
 
         binding.textViewDetailTitle.text = this.viewModel.post.value?.title.toString()
         binding.textViewDetailContents.text = this.viewModel.post.value?.contents.toString()

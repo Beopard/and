@@ -27,7 +27,7 @@ class DeliveryListFragment : Fragment() {
     private val viewModel by activityViewModels<MainViewModel>()
 
     private val tabTitleArray = arrayOf(
-        "Tab1",
+        "Tab",
         "Tab2",
         "Tab3"
     )
