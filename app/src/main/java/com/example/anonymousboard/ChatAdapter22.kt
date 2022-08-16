@@ -7,15 +7,15 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.anonymousboard.model.Order
 
-class ChatAdapter:RecyclerView.Adapter<ChatAdapter.ChatViewHolder>() {
+class ChatAdapter22:RecyclerView.Adapter<ChatAdapter22.ChatViewHolder>() {
     fun interface OnItemClickListener{
         fun onItemClick(v:View,textViewPostId:String)
     }
     private var listener:OnItemClickListener? = null
 
     private var data:MutableList<Order> = mutableListOf()
-//    private lateinit var latitude:String
-//    private lateinit var longitude:String
+    private lateinit var latitude:String
+    private lateinit var longitude:String
 
     fun setListener(listener: OnItemClickListener){
         this.listener = listener
@@ -43,9 +43,9 @@ class ChatAdapter:RecyclerView.Adapter<ChatAdapter.ChatViewHolder>() {
         val textViewEndPlace: TextView = view.findViewById(R.id.textViewEndPlace)
         val textViewDistance: TextView = view.findViewById(R.id.textViewDistance)
         val textViewDistanceFromMe: TextView = view.findViewById(R.id.textViewDistanceFromMe)
+        val textViewSize: TextView = view.findViewById(R.id.textViewSize)
         val textViewWeight: TextView = view.findViewById(R.id.textViewWeight)
         val textViewPrice: TextView = view.findViewById(R.id.textViewPrice)
-        val textViewSize: TextView = view.findViewById(R.id.textViewInfo)
         val textView12: TextView = view.findViewById(R.id.textView12)
         val textViewOrdId: TextView = view.findViewById(R.id.textViewOrdId)
         init {
@@ -70,8 +70,8 @@ class ChatAdapter:RecyclerView.Adapter<ChatAdapter.ChatViewHolder>() {
         holder.textViewEndPlace.text = item.end_place
         holder.textViewDistance.text = item.distance
         holder.textViewDistanceFromMe.text = item.distance_from_me
-        holder.textViewSize.text = item.info
-        holder.textViewWeight.text =item.weight
+        holder.textViewSize.text = item.size
+        holder.textViewWeight.text = item.weight
         holder.textViewPrice.text = item.price
         holder.textView12.text = "<->"
         holder.textViewOrdId.text = item.ord_id

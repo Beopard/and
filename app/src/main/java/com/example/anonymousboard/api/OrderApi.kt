@@ -7,9 +7,23 @@ import retrofit2.http.*
 
 interface OrderApi {
 
+    @GET("duser/{id}")
+    fun getOrder(@Path("id")id:String):Call<Order>
 
-    @GET("duser/orders/{user_id}")
-    fun getOrders(@Path("user_id")user_id:String): Call<List<Order>>
+    @GET("duser/orders1")
+    fun getOrders1(): Call<List<Order>>
+
+    @GET("duser/orders2")
+    fun getOrders2(): Call<List<Order>>
+
+    @GET("duser/orders22")
+    fun getOrders22(): Call<List<Order>>
+
+    @GET("duser/orders3")
+    fun getOrders3(): Call<List<Order>>
+
+    @PUT("duser/change/{id}")
+    fun changeStatus(@Path("id")id:String,@Query("status")title:String): Call<String>
 //
 //    @GET("postsViews")
 //    fun getPostsViews(): Call<List<Post>>

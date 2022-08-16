@@ -7,7 +7,7 @@ import retrofit2.create
 
 class JsServer {
     companion object{
-        private const val url = "http://10.30.3.45:8000/api/"
+        private const val url = "http://10.30.3.45:8080/api/"
         var gson = GsonBuilder().setLenient().create()
         private var server:Retrofit=Retrofit.Builder()
             .baseUrl(url)

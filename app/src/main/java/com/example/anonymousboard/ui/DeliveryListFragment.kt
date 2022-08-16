@@ -27,9 +27,9 @@ class DeliveryListFragment : Fragment() {
     private val viewModel by activityViewModels<MainViewModel>()
 
     private val tabTitleArray = arrayOf(
-        "Tab",
-        "Tab2",
-        "Tab3"
+        "운송가능",
+        "운송중",
+        "운송완료"
     )
 
 //    adapter.setListener{v,postId->
@@ -57,11 +57,6 @@ class DeliveryListFragment : Fragment() {
             tab.text = tabTitleArray[position]
         }.attach()
 
-        viewModel.getOrders("sw")
-        viewModel.orders.observe(viewLifecycleOwner) {
-            Log.d("RESPONSE", "orders.observe요${it.toString()}")
-            adapter.setData(it.toMutableList())
-        }
 
     }
 

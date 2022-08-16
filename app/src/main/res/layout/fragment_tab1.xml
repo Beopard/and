@@ -8,7 +8,7 @@
     tools:context=".Tab1Fragment">
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recyclerView2"
+        android:id="@+id/recyclerView1"
         android:layout_width="409dp"
         android:layout_height="729dp"
         app:layout_constraintStart_toStartOf="parent"

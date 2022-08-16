@@ -17,26 +17,115 @@ class MainViewModel : ViewModel() {
     val error = MutableLiveData<String>()
     val posts = MutableLiveData<List<Post>>()
     val post = MutableLiveData<Post>()
-    val orders = MutableLiveData<List<Order>>()
+    val order = MutableLiveData<Order>()
+    val orders1 = MutableLiveData<List<Order>>()
+    val orders2 = MutableLiveData<List<Order>>()
+    val orders22 = MutableLiveData<List<Order>>()
+    val orders3 = MutableLiveData<List<Order>>()
     lateinit var request: Call<Post>
 
-    fun getOrders(user_id: String) = viewModelScope.launch {
-        val request = JsServer.orderApi.getOrders(user_id)
+    fun getOrder(id: String) = viewModelScope.launch {
+        val request = JsServer.orderApi.getOrder(id)
+        request.enqueue(object : Callback<Order> {
+            override fun onResponse(call: Call<Order>, response: Response<Order>) {
+                order.value = response.body()
+                Log.d("RESPONSE", "getOrder요: ${response.code()} ${order.value}")
+            }
+
+            override fun onFailure(call: Call<Order>, t: Throwable) {
+                error.value = t.localizedMessage
+                Log.d("RESPONSE", "getOrder에러요: ${t.localizedMessage}")
+            }
+        })
+    }
+
+
+    fun getOrders1() = viewModelScope.launch {
+        val request = JsServer.orderApi.getOrders1()
         request.enqueue(object : Callback<List<Order>> {
             override fun onResponse(call: Call<List<Order>>, response: Response<List<Order>>) {
-                orders.value = response.body()
-                for(item in orders.value!!) {
-                    Log.d("RESPONSE", "getOrders요: ${item}")
-                }
-                Log.d("RESPONSE", "getOrders요: ${response.code()} ${orders.value}")
+                orders1.value = response.body()
+//                for(item in orders1.value!!) {
+//                    Log.d("RESPONSE", "getOrders1요: ${item}")
+//                }
+                Log.d("RESPONSE", "getOrders1요: ${response.code()} ${orders1.value}")
             }
 
             override fun onFailure(call: Call<List<Order>>, t: Throwable) {
                 error.value = t.localizedMessage
-                Log.d("RESPONSE", "getOrders요에러요: ${t.localizedMessage}")
+                Log.d("RESPONSE", "getOrders1요에러요: ${t.localizedMessage}")
             }
         })
     }
+
+    fun getOrders2() = viewModelScope.launch {
+        val request = JsServer.orderApi.getOrders2()
+        request.enqueue(object : Callback<List<Order>> {
+            override fun onResponse(call: Call<List<Order>>, response: Response<List<Order>>) {
+                orders2.value = response.body()
+//                for(item in orders2.value!!) {
+//                    Log.d("RESPONSE", "getOrders2요: ${item}")
+//                }
+                Log.d("RESPONSE", "getOrders2요: ${response.code()} ${orders2.value}")
+            }
+
+            override fun onFailure(call: Call<List<Order>>, t: Throwable) {
+                error.value = t.localizedMessage
+                Log.d("RESPONSE", "getOrders2요에러요: ${t.localizedMessage}")
+            }
+        })
+    }
+
+    fun getOrders22() = viewModelScope.launch {
+        val request = JsServer.orderApi.getOrders22()
+        request.enqueue(object : Callback<List<Order>> {
+            override fun onResponse(call: Call<List<Order>>, response: Response<List<Order>>) {
+                orders22.value = response.body()
+//                for(item in orders22.value!!) {
+//                    Log.d("RESPONSE", "getOrders22요: ${item}")
+//                }
+                Log.d("RESPONSE", "getOrders22요: ${response.code()} ${orders22.value}")
+            }
+
+            override fun onFailure(call: Call<List<Order>>, t: Throwable) {
+                error.value = t.localizedMessage
+                Log.d("RESPONSE", "getOrders22요에러요: ${t.localizedMessage}")
+            }
+        })
+    }
+
+    fun getOrders3() = viewModelScope.launch {
+        val request = JsServer.orderApi.getOrders3()
+        request.enqueue(object : Callback<List<Order>> {
+            override fun onResponse(call: Call<List<Order>>, response: Response<List<Order>>) {
+                orders3.value = response.body()
+//                for(item in orders3.value!!) {
+//                    Log.d("RESPONSE", "getOrders3요: ${item}")
+//                }
+                Log.d("RESPONSE", "getOrders3요: ${response.code()} ${orders3.value}")
+            }
+
+            override fun onFailure(call: Call<List<Order>>, t: Throwable) {
+                error.value = t.localizedMessage
+                Log.d("RESPONSE", "getOrders3요에러요: ${t.localizedMessage}")
+            }
+        })
+    }
+
+    fun changeStatus(id:String,status:String) = viewModelScope.launch {
+        val request = JsServer.orderApi.changeStatus(id,status)
+        request.enqueue(object : Callback<String> {
+            override fun onResponse(call: Call<String>, response: Response<String>) {
+                Log.d("RESPONSE", "changeStatus요: ${response.code()} ${response.body()}")
+            }
+
+            override fun onFailure(call: Call<String>, t: Throwable) {
+                error.value = t.localizedMessage
+                Log.d("RESPONSE", "changeStatus요에러요: ${t.localizedMessage}")
+            }
+        })
+    }
+
 
 
     fun attemptLogin(id: String,password:String) = viewModelScope.launch {
